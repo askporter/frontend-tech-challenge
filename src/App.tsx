@@ -1,4 +1,3 @@
-import { pbkdf2 } from "crypto";
 import { useEffect, useState } from "react";
 import {
   addProductToBasket,
@@ -19,10 +18,6 @@ export default function App() {
 
   const makeSetPageNumber = (page: number) => (_e: React.MouseEvent) => {
     setPageNumber(page);
-    getProducts(page).then((productsResponse) => {
-      setProducts(productsResponse.products);
-      setTotalPages(productsResponse.totalPages);
-    });
   };
 
   const makeHandleBasketAdd = (product: Product) => (_e: React.MouseEvent) => {
@@ -40,11 +35,10 @@ export default function App() {
 
   useEffect(() => {
     getProducts(pageNumber).then((productsResponse) => {
-      console.log(productsResponse);
       setProducts(productsResponse.products);
       setTotalPages(productsResponse.totalPages)
     });
-  }, []);
+  }, [pageNumber]);
 
   useEffect(() => {
     getBasket().then((basketResponse) => {
