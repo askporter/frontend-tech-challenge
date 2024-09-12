@@ -55,15 +55,21 @@ export default function App() {
           <div id={product.uid} className="product">
             <h3 className="product-title">{product.title}</h3>
             <div className="product-price">£{(product.price / 100).toFixed(2)}</div>
-            <button onClick={makeHandleBasketAdd(product)}>
-              Add to basket
-            </button>
+            <div className="product-actions">
+              <button onClick={makeHandleBasketAdd(product)}>
+                Add to basket
+              </button>
+            </div>
           </div>
         ))}
         <div className="pagination">
           {Array.from({ length: totalPages }).map((_item, i) => {
             return (
-              <button id={`${i + 1}`} onClick={makeSetPageNumber(i + 1)}>
+              <button 
+                id={`${i + 1}`} 
+                className={`pagination-link ${i + 1 === pageNumber ? 'is-active' : ''}`} 
+                onClick={makeSetPageNumber(i + 1)}
+              >
                 {i + 1}
               </button>
             );
@@ -76,14 +82,16 @@ export default function App() {
         {basketItems.map(({ product, count }) => (
           <div id={product.uid} className="basketItem">
             <h3 className="basketItem-title">
-              {product.title} ({count})
+              {product.title} <span className="basketItem-count">×{count}</span>
             </h3>
             <div className="basketItem-price">
               £{((product.price * count) / 100).toFixed(2)}
             </div>
-            <button onClick={makeHandleBasketRemove(product)}>
-              Remove from basket
-            </button>
+            <div className="basketItem-actions">
+              <button onClick={makeHandleBasketRemove(product)}>
+                Remove from basket
+              </button>
+            </div>
           </div>
         ))}
       </section>

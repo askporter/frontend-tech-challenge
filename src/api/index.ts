@@ -10,7 +10,6 @@ const perPage = 10;
 export const getProducts = async (
   page: number
 ): Promise<ProductsApiResponse> => {
-  console.log("getProducts");
   await imitateServerDelay();
   const startIndex = page * perPage - 1;
   return {
@@ -23,13 +22,11 @@ export const getProducts = async (
 const BasketDb = new Map<string, { product: Product; count: number }>();
 
 export const getBasket = async (): Promise<BasketApiResponse> => {
-  console.log("getBasket");
   await imitateServerDelay();
   return { items: Array.from(BasketDb.values()) };
 };
 
 export const addProductToBasket = async (product: Product) => {
-  console.log("addProductToBasket");
   if (BasketDb.has(product.uid)) {
     const basketItem = BasketDb.get(product.uid)!;
     BasketDb.set(product.uid, {
@@ -45,7 +42,6 @@ export const addProductToBasket = async (product: Product) => {
 };
 
 export const removeProductFromBasket = async (product: Product) => {
-  console.log("removeProductFromBasket");
   if (BasketDb.has(product.uid)) {
     const basketItem = BasketDb.get(product.uid)!;
 

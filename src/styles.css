@@ -16,8 +16,85 @@ code {
   display: flex;
   margin: 0 auto;
   max-width: 1024px;
+
+  & > * {
+    padding: 0 10px;
+  }
 }
 
-.columns > * {
-  padding: 0 10px;
+.product {
+  border: 1px solid lightgrey;
+  padding: 10px;
+  margin: 0 0 10px;
+
+  .product-title {
+    margin: 0 0 1em;
+  }
+
+  .product-actions {
+    margin: 10px 0 0;
+
+    button {
+      border: none;
+      background: lightblue;
+      padding: 5px 10px;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+        background: lightskyblue;
+      }
+    }
+  }
+}
+
+.basketItem {
+  border: 1px solid lightgrey;
+  padding: 10px;
+  margin: 0 0 10px;
+
+  .basketItem-title {
+    margin: 0 0 10px;
+  }
+  
+  .basketItem-count {
+    font-weight: normal;
+    font-size: 0.8em;
+  }
+
+  .basketItem-actions {
+    margin: 10px 0 0;
+
+    button {
+      border: none;
+      background: lightblue;
+      padding: 5px 10px;
+      border-radius: 5px;
+
+      &:hover {
+        cursor: pointer;
+        background: lightskyblue;
+      }
+    }
+  }
+}
+
+.pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+
+  .pagination-link {
+    all: unset;
+    margin-right: 10px;
+
+    &.is-active {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
 }
